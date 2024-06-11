@@ -10,8 +10,17 @@ const query = gql`
 `;
 
 export default function SongList() {
-  const {data} = useQuery(query);
-  console.log('data:', data);
+  const {data, loading} = useQuery(query);
 
-  return <div>SongList</div>;
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div>
+      {data.songs.map(song => (
+        <li>{song.title}</li>
+      ))}
+    </div>
+  );
 }
