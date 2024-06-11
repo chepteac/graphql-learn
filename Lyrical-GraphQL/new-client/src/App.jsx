@@ -1,5 +1,7 @@
+import SongList from '../components/SongList';
+
 function App() {
-  return <div>Lyrical</div>;
+  return <SongList />;
 }
 
 export default App;
