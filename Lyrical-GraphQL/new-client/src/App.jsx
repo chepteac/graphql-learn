@@ -1,7 +1,11 @@
-import SongList from '../components/SongList';
+import {Outlet} from 'react-router';
 
 function App() {
-  return <SongList />;
+  return (
+    <div className="container">
+      <Outlet />
+    </div>
+  );
 }
 
 export default App;
