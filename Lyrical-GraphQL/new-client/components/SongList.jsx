@@ -4,6 +4,7 @@ import {gql, useQuery} from '@apollo/client';
 const query = gql`
   {
     songs {
+      id
       title
     }
   }
@@ -17,10 +18,12 @@ export default function SongList() {
   }
 
   return (
-    <div>
+    <ul className="collection">
       {data.songs.map(song => (
-        <li>{song.title}</li>
+        <li key={song.id} className="collection-item">
+          {song.title}
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
