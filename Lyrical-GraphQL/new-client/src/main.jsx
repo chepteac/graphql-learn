@@ -9,6 +9,7 @@ import {router} from './router.jsx';
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
+  uri: 'http://localhost:4000/graphql',
 });
 
 ReactDOM.createRoot(document.getElementById('root')).render(
