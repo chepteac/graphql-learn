@@ -4,8 +4,10 @@ const expressGraphQL = require('express-graphql');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const schema = require('./schema/schema');
+var cors = require('cors');
 
 const app = express();
+app.use(cors());
 
 const MONGO_URI = process.env.CONNECTION_STRING;
 if (!MONGO_URI) {
