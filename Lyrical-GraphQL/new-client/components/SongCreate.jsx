@@ -1,13 +1,23 @@
 import {useId, useState} from 'react';
-import {gql} from '@apollo/client';
+import {gql, useMutation} from '@apollo/client';
+
+const mutation = gql`
+  mutation AddSong($title: String) {
+    addSong(title: $title) {
+      title
+    }
+  }
+`;
 
 export default function SongCreate() {
   const [title, setTitle] = useState('');
+  const [addSong] = useMutation(mutation);
   const id = useId();
   const inputId = `song-title-input-${id}`;
 
   const handleSubmit = event => {
     event.preventDefault();
+    addSong({variables: {title}});
   };
 
   return (
@@ -24,11 +34,3 @@ export default function SongCreate() {
     </div>
   );
 }
-
-const mutation = gql`
-  mutation {
-    addSong(title:) {
-      
-    }
-  }
-`;
