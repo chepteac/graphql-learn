@@ -2,8 +2,8 @@ import {createBrowserRouter} from 'react-router-dom';
 import {createGraphiQLFetcher} from '@graphiql/toolkit';
 import {GraphiQL} from 'graphiql';
 import App from './App';
-import SongList from '../components/SongList';
-import SongCreate from '../components/SongCreate';
+import SongList from './components/SongList';
+import SongCreate from './components/SongCreate';
 
 export const router = createBrowserRouter([
   {
