@@ -1,18 +1,9 @@
-import {gql, useQuery} from '@apollo/client';
+import {useQuery} from '@apollo/client';
 import {Link} from 'react-router-dom';
-
-//TODO: make sure to install these extensions in your vscode: GraphQL.vscode-graphql and GraphQL.vscode-graphql-syntax
-const query = gql`
-  {
-    songs {
-      id
-      title
-    }
-  }
-`;
+import {fetchSongs} from '../queries/fetchSongs';
 
 export default function SongList() {
-  const {data, loading} = useQuery(query);
+  const {data, loading} = useQuery(fetchSongs);
 
   if (loading) {
     return <div>Loading...</div>;
