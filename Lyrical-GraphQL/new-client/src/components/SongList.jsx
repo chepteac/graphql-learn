@@ -30,7 +30,7 @@ export default function SongList() {
       <ul className="collection">
         {data.songs.map(({id, title}) => (
           <li key={id} className="collection-item">
-            {title}
+            <Link to={`/songs/${id}`}>{title}</Link>
             <i className="material-icons" onClick={() => deleteSongHandler(id)}>
               delete
             </i>

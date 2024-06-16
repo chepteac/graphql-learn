@@ -1,6 +1,6 @@
 import {useQuery} from '@apollo/client';
 import fetchSong from '../queries/fetchSong';
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 
 export default function SongDetail() {
   const {id} = useParams();
@@ -12,6 +12,7 @@ export default function SongDetail() {
 
   return (
     <div>
+      <Link to="/">Back</Link>
       <h3>{song.title}</h3>
     </div>
   );
