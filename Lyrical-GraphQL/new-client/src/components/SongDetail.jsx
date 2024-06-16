@@ -16,7 +16,7 @@ export default function SongDetail() {
     <div>
       <Link to="/">Back</Link>
       <h3>{song.title}</h3>
-      <LyricList />
+      <LyricList lyrics={song.lyrics} />
       <LyricCreate songId={id} />
     </div>
   );
