@@ -1,11 +1,24 @@
 import {useState} from 'react';
-import {gql} from '@apollo/client';
+import {gql, useMutation} from '@apollo/client';
+// import {useParams} from 'react-router-dom';
 
-export default function LyricCreate() {
+export default function LyricCreate({songId}) {
+  /* As an alternative, you can get songId from the URL params:
+     const {id: songId} = useParams(); */
   const [content, setContent] = useState('');
+  const [addLyricToSong] = useMutation(mutation);
 
   const submitHandler = event => {
     event.preventDefault();
+
+    addLyricToSong({
+      variables: {
+        songId,
+        content,
+      },
+    });
+
+    setContent('');
   };
 
   return (
