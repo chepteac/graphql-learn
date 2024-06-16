@@ -1,13 +1,24 @@
 import React, {Component} from 'react';
 import {graphql} from 'react-apollo';
+import gql from 'graphql-tag';
 import {Link} from 'react-router';
 import {fetchSongs} from '../queries/fetchSongs';
 
 class SongList extends Component {
+  deleteSongHandler(id) {
+    this.props.mutate({variables: {id}});
+  }
+
   renderSongs() {
-    return this.props.data.songs.map(song => (
-      <li key={song.id} className="collection-item">
-        {song.title}
+    return this.props.data.songs.map(({id, title}) => (
+      <li key={id} className="collection-item">
+        {title}
+        <i
+          className="material-icons"
+          onClick={() => this.deleteSongHandler(id)}
+        >
+          delete
+        </i>
       </li>
     ));
   }
