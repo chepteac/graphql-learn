@@ -18,12 +18,19 @@ export default function SongList() {
     return <div>Loading...</div>;
   }
 
+  const deleteSongHandler = id => {
+    deleteSong({variables: {id}});
+  };
+
   return (
     <div>
       <ul className="collection">
-        {data.songs.map(song => (
-          <li key={song.id} className="collection-item">
-            {song.title}
+        {data.songs.map(({id, title}) => (
+          <li key={id} className="collection-item">
+            {title}
+            <i className="material-icons" onClick={() => deleteSongHandler(id)}>
+              delete
+            </i>
           </li>
         ))}
       </ul>
