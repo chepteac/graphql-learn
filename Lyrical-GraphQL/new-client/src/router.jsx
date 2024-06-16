@@ -4,6 +4,7 @@ import {GraphiQL} from 'graphiql';
 import App from './App';
 import SongList from './components/SongList';
 import SongCreate from './components/SongCreate';
+import SongDetail from './components/SongDetail';
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
       {
         path: 'songs/new',
         element: <SongCreate />,
+      },
+      {
+        path: 'songs/:id',
+        element: <SongDetail />,
       },
     ],
   },
