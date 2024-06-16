@@ -6,11 +6,13 @@ export default function SongDetail() {
   const {id} = useParams();
   const {data} = useQuery(fetchSong, {variables: {id}});
 
-  console.log('data:', data);
+  const song = data?.song;
+
+  if (!song) return <div></div>;
 
   return (
     <div>
-      <h3>Song Detail</h3>
+      <h3>{song.title}</h3>
     </div>
   );
 }
