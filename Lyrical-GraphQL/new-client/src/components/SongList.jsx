@@ -1,4 +1,4 @@
-import {gql, useMutation, useQuery} from '@apollo/client';
+import {gql, useApolloClient, useMutation, useQuery} from '@apollo/client';
 import {Link} from 'react-router-dom';
 import {fetchSongs} from '../queries/fetchSongs';
 
@@ -11,6 +11,7 @@ const mutation = gql`
 `;
 
 export default function SongList() {
+  const client = useApolloClient();
   const {data, loading} = useQuery(fetchSongs);
   const [deleteSong] = useMutation(mutation);
 
@@ -19,7 +20,9 @@ export default function SongList() {
   }
 
   const deleteSongHandler = id => {
-    deleteSong({variables: {id}});
+    deleteSong({variables: {id}}).then(() =>
+      client.refetchQueries({include: 'active'})
+    );
   };
 
   return (
