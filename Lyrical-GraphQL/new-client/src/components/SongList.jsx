@@ -1,9 +1,18 @@
-import {useQuery} from '@apollo/client';
+import {gql, useMutation, useQuery} from '@apollo/client';
 import {Link} from 'react-router-dom';
 import {fetchSongs} from '../queries/fetchSongs';
 
+const mutation = gql`
+  mutation DeleteSong($id: ID) {
+    deleteSong(id: $id) {
+      title
+    }
+  }
+`;
+
 export default function SongList() {
   const {data, loading} = useQuery(fetchSongs);
+  const [deleteSong] = useMutation(mutation);
 
   if (loading) {
     return <div>Loading...</div>;
