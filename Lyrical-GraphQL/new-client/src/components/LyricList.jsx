@@ -11,7 +11,7 @@ export default function LyricList({lyrics}) {
   `);
 
   const likeHandler = id => {
-    likeLyric(id);
+    likeLyric({variables: {id}});
   };
 
   return (
@@ -19,10 +19,12 @@ export default function LyricList({lyrics}) {
       {lyrics.map(({id, content, likes}) => (
         <li key={id} className="collection-item">
           {content}
-          <i className="material-icons" onClick={() => likeHandler(id)}>
-            thumb_up
-          </i>
-          {likes}
+          <div className="vote-box">
+            <i className="material-icons" onClick={() => likeHandler(id)}>
+              thumb_up
+            </i>
+            {likes}
+          </div>
         </li>
       ))}
     </ul>
