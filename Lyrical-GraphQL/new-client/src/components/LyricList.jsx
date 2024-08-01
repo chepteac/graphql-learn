@@ -10,8 +10,17 @@ export default function LyricList({lyrics}) {
     }
   `);
 
-  const likeHandler = id => {
-    likeLyric({variables: {id}});
+  const likeHandler = (id, likes) => {
+    likeLyric({
+      variables: {id},
+      optimisticResponse: {
+        likeLyric: {
+          id,
+          likes: likes + 1,
+          __typename: 'LyricType',
+        },
+      },
+    });
   };
 
   return (
@@ -20,7 +29,10 @@ export default function LyricList({lyrics}) {
         <li key={id} className="collection-item">
           {content}
           <div className="vote-box">
-            <i className="material-icons" onClick={() => likeHandler(id)}>
+            <i
+              className="material-icons"
+              onClick={() => likeHandler(id, likes)}
+            >
               thumb_up
             </i>
             {likes}
