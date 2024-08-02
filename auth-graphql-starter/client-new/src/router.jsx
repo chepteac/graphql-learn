@@ -11,6 +11,8 @@ export const router = createBrowserRouter([
   {
     path: '/graphql',
     element: (
+      /*This GraphiQL interface does not automatically set cookies, 
+        so please use the old GraphiQL interface for testing and debugging.*/
       <GraphiQL
         fetcher={createGraphiQLFetcher({url: 'http://localhost:4000/graphql'})}
       />
