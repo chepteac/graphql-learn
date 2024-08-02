@@ -11,7 +11,12 @@ export default function LoginForm() {
       <h3>Login</h3>
       <AuthForm
         submitHandler={({email, password}) => {
-          login({variables: {email, password}, refetchQueries: [{query}]});
+          login({
+            variables: {email, password},
+            refetchQueries: [{query}],
+          }).catch(res => {
+            const errors = res.graphQLErrors.map(error => error.message);
+          });
         }}
       />
     </div>
