@@ -2,11 +2,13 @@ import {createBrowserRouter} from 'react-router-dom';
 import {createGraphiQLFetcher} from '@graphiql/toolkit';
 import {GraphiQL} from 'graphiql';
 import App from './App';
+import LoginForm from './components/LoginForm';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    children: [{path: 'login', element: <LoginForm />}],
   },
   {
     path: '/graphql',
