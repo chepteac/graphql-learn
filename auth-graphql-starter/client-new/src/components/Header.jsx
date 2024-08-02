@@ -1,6 +1,7 @@
-import {useQuery} from '@apollo/client';
+import {useMutation, useQuery} from '@apollo/client';
 import query from '../queries/current-user';
 import {Link} from 'react-router-dom';
+import logoutMutation from '../mutations/logout';
 
 export default function Header() {
   const {data, loading} = useQuery(query);
@@ -22,8 +23,21 @@ export default function Header() {
 }
 
 function Buttons({loading, user}) {
+  const [logout] = useMutation(logoutMutation);
+
   if (loading) return <div />;
-  if (user) return <div>Logout</div>;
+  if (user)
+    return (
+      <li>
+        <a
+          onClick={() => {
+            logout();
+          }}
+        >
+          Logout
+        </a>
+      </li>
+    );
   return (
     <div>
       <li>
