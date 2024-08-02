@@ -1,3 +1,10 @@
+import AuthForm from './AuthForm';
+
 export default function LoginForm() {
-  return <div>LoginForm</div>;
+  return (
+    <div>
+      <h3>Login</h3>
+      <AuthForm />
+    </div>
+  );
 }
