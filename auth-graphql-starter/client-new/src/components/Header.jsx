@@ -31,7 +31,7 @@ function Buttons({loading, user}) {
       <li>
         <a
           onClick={() => {
-            logout();
+            logout({refetchQueries: [{query}]});
           }}
         >
           Logout
