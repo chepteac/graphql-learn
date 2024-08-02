@@ -8,7 +8,11 @@ export default function LoginForm() {
   return (
     <div>
       <h3>Login</h3>
-      <AuthForm />
+      <AuthForm
+        submitHandler={({email, password}) => {
+          login({variables: {email, password}});
+        }}
+      />
     </div>
   );
 }

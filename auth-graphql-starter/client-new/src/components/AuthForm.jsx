@@ -1,26 +1,29 @@
-import {useId, useState} from 'react';
+import {useState} from 'react';
 
-export default function AuthForm() {
+export default function AuthForm({submitHandler}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const emailInputId = useId();
-  const passwordInputId = useId();
 
   return (
     <div className="row">
-      <form className="col s6">
+      <form
+        className="col s6"
+        onSubmit={e => {
+          e.preventDefault();
+          submitHandler({email, password});
+        }}
+      >
         <div className="input-field">
-          <label htmlFor={emailInputId}>Email</label>
           <input
-            id={emailInputId}
+            placeholder="Email"
             value={email}
             onChange={e => setEmail(e.target.value)}
           />
         </div>
         <div className="input-field">
-          <label htmlFor={passwordInputId}>Password</label>
           <input
-            id={passwordInputId}
+            placeholder="Password"
+            type="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
