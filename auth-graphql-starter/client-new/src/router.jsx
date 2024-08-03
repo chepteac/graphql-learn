@@ -4,6 +4,7 @@ import {GraphiQL} from 'graphiql';
 import App from './App';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
+import Dashboard from './components/Dashboard';
 
 export const router = createBrowserRouter([
   {
@@ -12,6 +13,7 @@ export const router = createBrowserRouter([
     children: [
       {path: 'login', element: <LoginForm />},
       {path: 'signup', element: <SignupForm />},
+      {path: 'dashboard', element: <Dashboard />},
     ],
   },
   {
