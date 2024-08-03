@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-export default function AuthForm({submitHandler}) {
+export default function AuthForm({submitHandler, errors}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -27,6 +27,11 @@ export default function AuthForm({submitHandler}) {
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
+        </div>
+        <div className="errors">
+          {errors.map(error => (
+            <div key={error}>{error}</div>
+          ))}
         </div>
         <button className="btn">Submit</button>
       </form>
