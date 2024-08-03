@@ -9,10 +9,6 @@ class RequireAuth extends Component {
       hashHistory.push('/login');
     }
   }
-
-  render() {
-    return <div>{this.props.children}</div>;
-  }
 }
 
 export default graphql(currentUser)(RequireAuth);
