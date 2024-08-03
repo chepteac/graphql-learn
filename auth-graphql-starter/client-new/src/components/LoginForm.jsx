@@ -5,7 +5,7 @@ import query from '../queries/current-user';
 import {useState} from 'react';
 
 export default function LoginForm() {
-  const [errors, setErorrs] = useState([]);
+  const [errors, setErrors] = useState([]);
   const [login] = useMutation(loginMutation);
 
   return (
@@ -18,7 +18,7 @@ export default function LoginForm() {
             variables: {email, password},
             refetchQueries: [{query}],
           }).catch(res => {
-            setErorrs(res.graphQLErrors.map(error => error.message));
+            setErrors(res.graphQLErrors.map(error => error.message));
           });
         }}
       />
