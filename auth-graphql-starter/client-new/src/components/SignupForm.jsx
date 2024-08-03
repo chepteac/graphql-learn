@@ -8,7 +8,14 @@ export default function SignupForm() {
   return (
     <div>
       <h3>Sign up</h3>
-      <AuthForm />
+      <AuthForm
+        errors={[]}
+        submitHandler={({email, password}) => {
+          signup({
+            variables: {email, password},
+          });
+        }}
+      />
     </div>
   );
 }

@@ -3,12 +3,16 @@ import {createGraphiQLFetcher} from '@graphiql/toolkit';
 import {GraphiQL} from 'graphiql';
 import App from './App';
 import LoginForm from './components/LoginForm';
+import SignupForm from './components/SignupForm';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    children: [{path: 'login', element: <LoginForm />}],
+    children: [
+      {path: 'login', element: <LoginForm />},
+      {path: 'signup', element: <SignupForm />},
+    ],
   },
   {
     path: '/graphql',
