@@ -5,6 +5,7 @@ import App from './App';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import Dashboard from './components/Dashboard';
+import requireAuth from './components/requireAuth';
 
 export const router = createBrowserRouter([
   {
@@ -13,7 +14,7 @@ export const router = createBrowserRouter([
     children: [
       {path: 'login', element: <LoginForm />},
       {path: 'signup', element: <SignupForm />},
-      {path: 'dashboard', element: <Dashboard />},
+      {path: 'dashboard', element: requireAuth(Dashboard)},
     ],
   },
   {
