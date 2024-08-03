@@ -12,7 +12,7 @@ const requireAuth = WrappedComponent => {
       if (!loading && !data.user) {
         navigate('/login');
       }
-    }, [loading, data.user, navigate]);
+    }, [loading, data?.user, navigate]);
 
     return <WrappedComponent {...props} />;
   }
